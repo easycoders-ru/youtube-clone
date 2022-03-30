@@ -18,5 +18,9 @@
   "homepage": "https://github.com/EasyCoders-ru/youtube-clone#readme",
   "dependencies": {
     "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11"
   }
 }
