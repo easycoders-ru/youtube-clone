@@ -7,7 +7,7 @@
     "url": "git+https://github.com/EasyCoders-ru/youtube-clone.git"
   },
   "scripts": {
-    "start": "node index.js"
+    "start:dev": "nodemon --exec babel-node index.js"
   },
   "author": "Антон Голосниченко (ИзиКодерс)",
   "license": "MIT",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
+    "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11"
   }
 }
