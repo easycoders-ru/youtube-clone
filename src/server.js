@@ -3,13 +3,15 @@ import express from "express";
 const app = express();
 const PORT = 4000;
 
-const handleHome = () =>
-  console.log("Кто-то запрашивает главную страницу сайта");
+const handleHome = (req, res) => {
+  return res.send("Здесь будет главная страница сайта");
+};
+
+const handleSearch = (req, res) => {
+  return res.send("Здесь можно будет найти видео");
+};
 
 app.get("/", handleHome);
-
-const handleSearch = () => console.log("Кто-то что-то ищет");
-
 app.get("/search", handleSearch);
 
 const handleListen = () => {
