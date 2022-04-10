@@ -7,12 +7,12 @@ const handleHome = (req, res) => {
   return res.send("Здесь будет главная страница сайта");
 };
 
-const handleSearch = (req, res) => {
-  return res.send("Здесь можно будет найти видео");
+const loggerMiddleware = (req, res, next) => {
+  console.log(req.originalUrl);
+  next();
 };
 
-app.get("/", handleHome);
-app.get("/search", handleSearch);
+app.get("/", loggerMiddleware, handleHome);
 
 const handleListen = () => {
   console.log(`🚀 Сервер успешно запущен по адресу http://localhost:${PORT}`);
