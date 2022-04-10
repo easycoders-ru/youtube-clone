@@ -8,11 +8,16 @@ const handleHome = (req, res) => {
 };
 
 const loggerMiddleware = (req, res, next) => {
-  console.log(req.originalUrl);
+  console.log(`${req.method} ${req.originalUrl}: ${req.requestDate}`);
   next();
 };
 
-app.get("/", loggerMiddleware, handleHome);
+const dateTimeMiddleware = (req, res, next) => {
+  req.requestDate = new Date();
+  next();
+};
+
+app.get("/", dateTimeMiddleware, loggerMiddleware, handleHome);
 
 const handleListen = () => {
   console.log(`🚀 Сервер успешно запущен по адресу http://localhost:${PORT}`);
