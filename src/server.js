@@ -1,28 +1,13 @@
 import express from "express";
 import morgan from "morgan";
+import globalRouter from "./routers/globalRouter";
+import userRouter from "./routers/userRouter";
+import videoRouter from "./routers/videoRouter";
 
 const app = express();
 const logger = morgan("dev");
 app.use(logger);
 const PORT = 4000;
-
-const globalRouter = express.Router();
-
-const handleHome = (req, res) => res.send("Главная страница");
-
-globalRouter.get("/", handleHome);
-
-const userRouter = express.Router();
-
-const handleEditUser = (req, res) => res.send("Редактирование профиля");
-
-userRouter.get("/edit", handleEditUser);
-
-const videoRouter = express.Router();
-
-const handleVideoWatch = (req, res) => res.send("Просмотр видео");
-
-videoRouter.get("/watch", handleVideoWatch);
 
 app.use("/", globalRouter);
 app.use("/users", userRouter);
