@@ -1,23 +1,22 @@
 import express from "express";
+import morgan from "morgan";
 
 const app = express();
+const logger = morgan("dev");
 const PORT = 4000;
 
 const handleHome = (req, res) => {
   return res.send("Здесь будет главная страница сайта");
 };
 
-const loggerMiddleware = (req, res, next) => {
-  console.log(`${req.method} ${req.originalUrl}: ${req.requestDate}`);
-  next();
+const handleLogin = (req, res) => {
+  return res.send("ЗДесь будет страница входа в аккаунт");
 };
 
-const dateTimeMiddleware = (req, res, next) => {
-  req.requestDate = new Date();
-  next();
-};
+app.use(logger);
 
-app.get("/", dateTimeMiddleware, loggerMiddleware, handleHome);
+app.get("/", handleHome);
+app.get("/login", handleLogin);
 
 const handleListen = () => {
   console.log(`🚀 Сервер успешно запущен по адресу http://localhost:${PORT}`);
